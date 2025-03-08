@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="memo.css">
     <title>Document</title>
-    <link rel="stylesheet" href="memo.css">
 </head>
 
 <body>
@@ -27,15 +26,16 @@
         <button onclick="font50()">50px</button>
         <button onclick="reset_size()">초기화</button>
     </div>
-    <ul>
-        Memo List
-    </ul>
+    <div>
+        <ul id="memos">
+            Memo List
+        </ul>
+    </div>
     <script>
         const text = document.querySelector('.text');
         const btnSave = document.querySelector('.save')
         const btnRoad = document.querySelector('.road')
-        const ul = document.querySelector('ul')
-        let title
+        const memos = document.querySelector('#memos')
 
         btnSave.addEventListener('click', function () {
             if (confirm("저장하시겠습니까?")) {
@@ -43,20 +43,17 @@
                 localStorage.setItem(title, text.value)
                 let liEl = document.createElement("li");
                 liEl.textContent = title;
-                ul.appendChild(liEl)
+                liEl.addEventListener('click', (e) => {
+                    console.log(e.target.innerText)
+                    if (confirm("기존 내용이 덮어씌워집니다. 불러오시겠습니까?")) {
+                        const clicked = e.target.innerText
+                        text.value = localStorage.getItem(clicked)
+                    }
+                })
+                memos.appendChild(liEl)
             }
         })
-        let liEl = document.querySelectorAll('li')
 
-        liEl.forEach((li) => {
-            li.addEventListener('click', (e) => {
-                if (confirm("기존 내용이 덮어씌워집니다. 불러오시겠습니까?")) {
-                    console.log('click')
-                    const clicked = e.target.innerText
-                    text.value = localStorage.getItem(clicked)
-                }
-            })
-        })
 
 
         // function () {
