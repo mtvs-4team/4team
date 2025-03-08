@@ -17,3 +17,10 @@ button{
 .dark{
     background-color: rgb(94, 94, 94);
 }
+
+.color{
+
+}
+.showBg{
+    display:none;
+}
