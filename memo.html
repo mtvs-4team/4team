@@ -1,19 +1,34 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="memo.css">
     <title>Document</title>
 </head>
+
 <body>
+
+
     <div class="memo">
         <title></title>
         <textarea class="text"></textarea>
         <button class="save">저장</button>
-        <button class="road" >불러오기</button>
+        <button class="road">불러오기</button>
         <button class="BgChange">색깔</button>
-        <input type = "color" class="color">
+        <input type="color" class="color">
+        <button onclick="change_Gung()">궁서체</button>
+        <button onclick="change_Gul()">굴림체</button>
+        <button onclick="change_Na()">나눔고딕</button>
+        <button onclick="reset()">초기화</button>
+
+        <button onclick="font5()">5px</button>
+        <button onclick="font20()">20px</button>
+        <button onclick="font50()">50px</button>
+        <button onclick="reset_size()">초기화</button>
+
+        <input type = "text" id = "change">
     </div>
 
     <script>
@@ -22,24 +37,60 @@
         const btnRoad = document.querySelector('.road');
         const textarea = document.querySelector('.text');
         const btnBgChg = document.querySelector('.BgChange');
-        const color = document.querySelector('.color') ;
-        btnSave.addEventListener('click',function(){
-            if(confirm("저장하시겠습니까?")){
-                localStorage.setItem('content',text.value)
-            }  
-        }) ;
-        btnRoad.addEventListener('click', function(){
-            if(confirm("기존 내용이 덮어씌워집니다. 불러오시겠습니까?"))
-        {text.value = localStorage.getItem('content')}     
+        const color = document.querySelector('.color');
+        btnSave.addEventListener('click', function () {
+            if (confirm("저장하시겠습니까?")) {
+                localStorage.setItem('content', text.value)
+            }
         });
-        
-        btnBgChg.addEventListener('click',function(){
+        btnRoad.addEventListener('click', function () {
+            if (confirm("기존 내용이 덮어씌워집니다. 불러오시겠습니까?")) { text.value = localStorage.getItem('content') }
+        });
+
+        btnBgChg.addEventListener('click', function () {
             color.classList.toggle("showBg")
         })
-        color.addEventListener('input',function(){
-            textarea.style.backgroundColor=color.value
+        color.addEventListener('input', function () {
+            textarea.style.backgroundColor = color.value
         })
+
+        //--------글꼴 변경---------//
+        function change_Gung() {
+            document.getElementsByClassName("text").style.fontFamily = "궁서", Gungsuh, Arial, sans - serif;
+
+        }
+
+        function change_Gul() {
+            document.getElementsByClassName("text").style.fontFamily = "굴림", Gulim, Arial, sans - serif;
+        }
+
+        function change_Na() {
+            document.getElementsByClassName("text").style.fontFamily = "나눔 고딕", NanumGothic, Arial, sans - serif;
+        }
+
+        function reset() {
+            document.getElementsByClassName("text").style.fontFamily = "initial";
+        }
+        //--------폰트 크기 변경---------//
+        function font5() {
+            document.getElementsByClassName("text").style.fontSize = "5px";
+        }
+
+        function font20() {
+            document.getElementsByClassName("text").style.fontSize = "20px";
+        }
+
+        function font50() {
+            document.getElementsByClassName("text").style.fontSize = "50px";
+        }
+
+        function reset_size() {
+            document.getElementsByClassName("texts").style.fontSize = "initial";
+        }
+
+
     </script>
-    
+
 </body>
+
 </html>
