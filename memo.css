@@ -12,3 +12,14 @@
 button{
     margin-top: 30px;
 }
+
+.dark{
+    background-color: rgb(94, 94, 94);
+}
+
+.color{
+
+}
+.showBg{
+    display:none;
+}
