@@ -18,7 +18,7 @@ button{
 }
 
 li:first-child{
-    display: none;
+    display: none
 }
 .showBg{
     display:none;
