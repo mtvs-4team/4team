@@ -17,8 +17,8 @@ button{
     background-color: rgb(94, 94, 94);
 }
 
-.color{
-
+li:first-child{
+    display: none;
 }
 .showBg{
     display:none;
