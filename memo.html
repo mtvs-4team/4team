@@ -1,11 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
+    <div class="memo">
+        <title></title>
+        <textarea class="text"></textarea>
+        <button class="save">저장</button>
+        <button class="road" >불러오기</button>
+    </div>
+
+    <script>
+        const text = document.querySelector('.text');
+        const btnSave = document.querySelector('.save')
+        const btnRoad = document.querySelector('.road')
+
+        btnSave.addEventListener('click',function(){
+            if(confirm("저장하시겠습니까?")){
+                localStorage.setItem('content',text.value)
+            }  
+        }) 
+        btnRoad.addEventListener('click', function(){
+            if(confirm("기존 내용이 지워집니다. 불러오시겠습니까?"))
+        {text.value = localStorage.getItem('content')}     
+        })
+    </script>
     
 </body>
 </html>
