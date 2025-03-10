@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+<!--수정-->
 
 <head>
     <meta charset="UTF-8">
@@ -25,11 +26,13 @@
     </div>
     <div class="box">
         <div class="memo">
-            <textarea class="text"></textarea>
+            <textarea class="text" id='text'></textarea>
             <div class="optionbox">
                 <button class="save">SAVE</button>
+                <button class="remove">remove</button>
                 <button class="BgChange">COLOR</button>
                 <input type="color" class="color">
+
             </div>
         </div>
         <div>
@@ -40,10 +43,22 @@
     </div>
 
     <script>
+        // document.addEventListener("DOMContentLoaded", () => {
+        //     if (localStorage.length > 0) {
+        //         for (let i = 0; i < localStorage.length; i++) {
+        //             const key = localStorage.key(i);
+        //             let addLi = document.createElement("li")
+        //             addLi.innerText = key;
+        //             memos.appendChild(addLi)
+        //         }
+        //     }
+        // })
+
         const text = document.querySelector('.text');
         const btnSave = document.querySelector('.save')
         const btnRoad = document.querySelector('.road')
         const memos = document.querySelector('#memos')
+        const btnRmv = document.querySelector('.remove');
 
         btnSave.addEventListener('click', function () {
             if (confirm("저장하시겠습니까?")) {
@@ -65,11 +80,38 @@
         const btnBgChg = document.querySelector('.BgChange');
         const color = document.querySelector('.color');
 
+
         btnBgChg.addEventListener('click', function () {
             color.classList.toggle("showBg")
         })
         color.addEventListener('input', function () {
             text.style.backgroundColor = color.value
+        })
+
+
+        btnBgChg.addEventListener('click', function () {
+            color.classList.toggle("showBg")
+        })
+        color.addEventListener('input', function () {
+            text.style.backgroundColor = color.value
+        })
+
+        btnRmv.addEventListener('click', function () {
+            if (confirm("삭제하시겠습니까?")) {
+                title = prompt('삭제하실 제목을 입력해주세요');
+                console.log(title)
+                if (title) {
+                    document.querySelectorAll("li").forEach(el => {
+                        if (el.textContent.includes(title)) {
+                            console.log(el)
+                            el.remove()
+                            localStorage.removeItem(title);
+                            document.getElementById('text').value='';
+                        }
+                    });
+                }
+            }
+
         })
 
         // //--------글꼴 변경---------//
