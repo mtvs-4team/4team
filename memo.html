@@ -31,8 +31,6 @@
                 <button class="BgChange">COLOR</button>
                 <input type="color" class="color">
             </div>
-
-
         </div>
         <div>
             <ul id="memos">
@@ -40,7 +38,6 @@
             </ul>
         </div>
     </div>
-
 
     <script>
         const text = document.querySelector('.text');
@@ -65,18 +62,15 @@
             }
         })
 
+        const btnBgChg = document.querySelector('.BgChange');
+        const color = document.querySelector('.color');
 
-
-        // --------만들다만 기능!!---------
-        // const btnBgChg = document.querySelector('.BgChange');
-        // const color = document.querySelector('.color');
-
-        // btnBgChg.addEventListener('click', function () {
-        //     color.classList.toggle("showBg")
-        // })
-        // color.addEventListener('input', function () {
-        //     text.style.backgroundColor = color.value
-        // })
+        btnBgChg.addEventListener('click', function () {
+            color.classList.toggle("showBg")
+        })
+        color.addEventListener('input', function () {
+            text.style.backgroundColor = color.value
+        })
 
         // //--------글꼴 변경---------//
         // function change_Gung() {
